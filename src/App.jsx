@@ -1,30 +1,20 @@
-import React from 'react'; 
-import PropTypes from 'prop-types';
-import Contact from './Assets/Contact';
+import Contact from './assets/Contact';
+import Hello from './assets/hello';
 
-function Hello(props) {
-  console.log('Hello component');
+function App() {
+  const helloData = [
+    { name: 'Napat', message: 'Hi there' },
+    { name: 'Tom', message: 'Hello..' }
+  ];
+
   return (
     <div>
-      <h1>Hello {props.name} {props.message}</h1>
+      {helloData.map((data, index) => (
+        <Hello key={index} name={data.name} message={data.message} />
+      ))}
+      <Contact email="napat@gmail.com" phone="087-777-777" />
     </div>
   );
 }
 
-// Correctly attach propTypes to the Hello component
-Hello.propTypes = {
-  name: PropTypes.string.isRequired,
-  message: PropTypes.string
-};
-
-// Correctly attach defaultProps to the Hello component
-Hello.defaultProps = {
-  name: "Guest",
-  message: "Good Morning"
-};
-
-Contact.defaultProps = {
-  email: "Guest",
-  phone: "Good Morning"
-};
-export default Hello;
+export default App;
